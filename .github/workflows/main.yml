@@ -6,7 +6,7 @@ on:
 
 jobs:
   deploy:
-    - name: Deploy static html files
+    - name: "Deploy static html files"
       uses: South-Paw/action-netlify-deploy@v1.2.0
       with:
         github-token: ${{ secrets.GITHUB_TOKEN }}
