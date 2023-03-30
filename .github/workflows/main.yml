@@ -1,0 +1,15 @@
+name: "Development workflow"
+
+on: 
+  push
+
+jobs:
+  deploy:
+    name: "Deploy static html tile to Netlify"
+    runs-on: ubuntu-latest
+
+    steps:
+      - uses: jsmrcaga/action-netlify-deploy@v2.0.0
+        with:
+          NETLIFY_AUTH_TOKEN: ${{ secrets.MY_TOKEN_SECRET }}
+          NETLIFY_DEPLOY_TO_PROD: true
