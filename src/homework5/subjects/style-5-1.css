@@ -1,0 +1,17 @@
+div#outer {
+  border: 10px dotted red;
+  box-sizing: content-box;
+  height: 100px;
+  padding: 20px;
+  width: 200px;
+}
+
+div#inner {
+  background: url("./monet.jpg");
+  background-size: cover;
+  background-origin: border-box;
+  border: 10px dotted blue;
+  box-sizing: border-box;
+  height: 100px;
+  width: 200px;
+}

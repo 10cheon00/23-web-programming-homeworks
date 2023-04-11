@@ -1,0 +1,14 @@
+h2 {
+  text-shadow: 3px 3px red;
+}
+
+div > img {
+  vertical-align: middle;
+  content: url("./back.png");
+  width: 200px;
+  height: 320px;
+}
+
+div > img:hover {
+  content: url("./spade-7.png");
+}
