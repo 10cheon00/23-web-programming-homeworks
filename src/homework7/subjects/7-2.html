@@ -1,0 +1,46 @@
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <title>book 객체 배열 만들기</title>
+    <script type="text/javascript">
+      window.onload = () => {
+        const bookList = [];
+        const Book = function (title, author, price) {
+          this.title = title;
+          this.author = author;
+          this.price = price;
+
+          this.toString = function () {
+            return `${this.title}, ${this.author}, ${this.price}`;
+          };
+        };
+
+        for (let i = 0; i < 5; i++) {
+          const answer = prompt(
+            "콤마(,)로 분리하면서 책제목 저자 가격 순으로 입력"
+          );
+          const answerList = answer.replaceAll(" ", "").split(",");
+          const book = new Book(...answerList);
+          bookList.push(book);
+        }
+
+        document.write("<h2>book 객체 배열 만들기</h2><hr>");
+
+        bookList.forEach((book) => {
+          document.write(book.toString() + "<br>");
+        });
+        document.write("<hr>");
+
+        const mostExpensiveBook = bookList.reduce((mostExpensiveBook, book) => {
+          return mostExpensiveBook.price > book.price
+            ? mostExpensiveBook
+            : book;
+        });
+        document.write(`
+          <p>가장 가격이 비싼 책은 ${mostExpensiveBook.title}</p>
+        `);
+      };
+    </script>
+  </head>
+  <body></body>
+</html>

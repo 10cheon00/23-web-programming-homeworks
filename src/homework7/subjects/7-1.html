@@ -1,0 +1,30 @@
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <title>정수 5개 입력</title>
+    <script type="text/javascript">
+      window.onload = () => {
+        const answerList = new Array();
+        for (let i = 0; i < 5; i++) {
+          const answer = prompt("정수 입력");
+          answerList.push(answer);
+        }
+
+        const listToString = (list) => {
+          return list.toString().replaceAll(",", " ");
+        };
+
+        document.write(`
+          <h2>정수 5개 입력받아 역순으로 출력</h2>
+          <hr/>
+          <span>입력된 수의 배열</span><br>
+          ${listToString(answerList)}
+          <hr/>
+          <span>역순으로 재정렬된 배열</span><br>
+          ${listToString(answerList.reverse())}
+        `);
+      };
+    </script>
+  </head>
+  <body></body>
+</html>
