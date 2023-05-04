@@ -1,0 +1,40 @@
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <title>visiblity 프로퍼티</title>
+    <style>
+      span {
+        visibility: hidden;
+        color: blue;
+      }
+    </style>
+    <script type="text/javascript">
+      const toggle = () => {
+        const elementList = document.querySelectorAll("span");
+        for (let i = 0; i < elementList.length; i++) {
+          const style = window.getComputedStyle(elementList[i]);
+          if (style.getPropertyValue("visibility") === "hidden") {
+            elementList[i].style.visibility = "visible";
+          } else {
+            elementList[i].style.setProperty("visibility", "hidden");
+          }
+        }
+      };
+    </script>
+  </head>
+  <body>
+    <h2>
+      다음 빈 곳에 숨은 단어?<input
+        type="button"
+        onclick="toggle()"
+        value="show/hide"
+      />
+    </h2>
+    <hr />
+    <ul>
+      <li>I (<span>love</span>) you.</li>
+      <li>CSS is Cascading (<span>Style</span>) Sheet.</li>
+      <li>응답하라 (<span>1988</span>).</li>
+    </ul>
+  </body>
+</html>
