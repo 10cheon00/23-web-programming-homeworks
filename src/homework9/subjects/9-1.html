@@ -1,0 +1,55 @@
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <title>onmouseover과 onmouseout</title>
+    <script type="text/javascript">
+      const hideTooltip = () => {
+        const tooltipElement = document.getElementById("tooltip");
+        tooltipElement.style.visibility = "hidden";
+      };
+      const showTooltip = (event, text) => {
+        const tooltipElement = document.getElementById("tooltip");
+        tooltipElement.style.visibility = "visible";
+        tooltipElement.innerText = text;
+        tooltipElement.style.left = `${event.clientX}px`;
+        tooltipElement.style.top = `${event.clientY}px`;
+      };
+    </script>
+    <style>
+      #tooltip {
+        visibility: hidden;
+        background-color: aliceblue;
+        width: 200px;
+        height: 40px;
+        border: 1px solid yellowgreen;
+        position: absolute;
+      }
+    </style>
+  </head>
+  <body>
+    <h2>아이템에 마우스를 올리면 설명 출력</h2>
+    <hr />
+    <p>웹프로그래밍</p>
+    <ul>
+      <li
+        onmouseover="showTooltip(event, '웹 문서의 뼈대 작성')"
+        onmouseout="hideTooltip()"
+      >
+        HTML
+      </li>
+      <li
+        onmouseover="showTooltip(event, '웹 문서를 꾸미는 역할')"
+        onmouseout="hideTooltip()"
+      >
+        CSS
+      </li>
+      <li
+        onmouseover="showTooltip(event, '사용자 동작에 반응')"
+        onmouseout="hideTooltip()"
+      >
+        JavaScript
+      </li>
+    </ul>
+    <div id="tooltip"></div>
+  </body>
+</html>
