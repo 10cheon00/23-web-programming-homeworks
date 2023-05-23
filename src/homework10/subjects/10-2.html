@@ -10,9 +10,7 @@
         const element = document.getElementById("clock");
         element.style.opacity = 1;
         const date = new Date();
-        element.innerText = `${date.getHours() >= 12 ? "오후" : "오전"} ${
-          date.getHours() % 12
-        }:${date.getMinutes()}:${date.getSeconds()}`;
+        element.innerText = date.toLocaleTimeString();
       };
 
       const toggle = () => {
