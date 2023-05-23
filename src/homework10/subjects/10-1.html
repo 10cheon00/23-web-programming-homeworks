@@ -1,0 +1,29 @@
+<html>
+  <head>
+    <title>포털 사이트</title>
+    <meta chartset="utf-8" />
+    <script>
+      let ref = null;
+      const openWebPage = (value) => {
+        const webPageUrl = [
+          "https://www.google.com",
+          "https://www.naver.com",
+          "https://www.daum.net",
+        ];
+        window.open(webPageUrl[value], "newWindow").focus();
+      };
+    </script>
+  </head>
+  <body>
+    <h2>Select Option으로 포털 사이트 접속</h2>
+    <hr />
+    <p>포털사이트</p>
+    <form>
+      <select onchange="openWebPage(this.value)">
+        <option name="site" value="0">Google</option>
+        <option name="site" value="1">Naver</option>
+        <option name="site" value="2">Daum</option>
+      </select>
+    </form>
+  </body>
+</html>
