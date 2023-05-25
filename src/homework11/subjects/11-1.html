@@ -1,0 +1,103 @@
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <title>마우스 드래깅으로 캔버스에 그리기</title>
+  </head>
+  <script>
+    const changeWeight = (value) => {
+      const context = getContext();
+      lineWidth = value;
+      context.lineWidth = lineWidth;
+    };
+    const changeColor = (value) => {
+      const context = getContext();
+      context.strokeStyle = value;
+    };
+    const changeBackgroundColor = (value) => {
+      document.getElementById("canvas").style.backgroundColor = value;
+    };
+    const getContext = () => {
+      const canvas = document.getElementById("canvas");
+      return canvas.getContext("2d");
+    };
+
+    let isMouseDown = false;
+    let lineWidth = 1;
+    let strokeStyle = "#f48413";
+    let backgroundColor = "#f0f8ff";
+    let prevX = null;
+    let prevY = null;
+
+    window.onload = () => {
+      document.getElementById("stroke-style").value = strokeStyle;
+      document.getElementById("background-color").value = backgroundColor;
+
+      const draw = (event) => {
+        const curX = event.offsetX;
+        const curY = event.offsetY;
+        if (prevX === null) {
+          prevX = curX;
+        }
+        if (prevY === null) {
+          prevY = curY;
+        }
+
+        if (isMouseDown) {
+          const context = getContext();
+          context.beginPath();
+          context.moveTo(prevX, prevY);
+          context.lineTo(curX, curY);
+          context.stroke();
+        }
+
+        prevX = event.offsetX;
+        prevY = event.offsetY;
+      };
+
+      const enable = () => {
+        isMouseDown = true;
+      };
+      const disable = () => {
+        isMouseDown = false;
+      };
+      const canvas = document.getElementById("canvas");
+      canvas.getContext("2d").strokeStyle = strokeStyle;
+      canvas.addEventListener("mousemove", draw);
+      canvas.addEventListener("mousedown", enable);
+      canvas.addEventListener("mouseup", disable);
+      canvas.addEventListener("mouseout", disable);
+    };
+  </script>
+  <body>
+    <h2>마우스를 누른 채 드래깅하여 그림 그려보세요</h2>
+    <hr />
+    <form>
+      <label>선 굵기 : </label>
+      <input
+        type="number"
+        min="1"
+        max="20"
+        value="1"
+        onchange="changeWeight(this.value)"
+      />
+      <label>선 색 : </label>
+      <input
+        id="stroke-style"
+        type="color"
+        onchange="changeColor(this.value)"
+      />
+      <label>배경 색 : </label>
+      <input
+        id="background-color"
+        type="color"
+        onchange="changeBackgroundColor(this.value)"
+      />
+    </form>
+    <canvas
+      id="canvas"
+      style="background-color: aliceblue"
+      width="380"
+      height="380"
+    ></canvas>
+  </body>
+</html>
